@@ -1,43 +1,12 @@
-from json import dump
-from os import listdir
+from sys import argv
+from json import load, loads
 from os.path import join
-from re import match, sub
 from xml.etree.ElementTree import Element, tostring
 
-answer = None
-current = None
 
-for file in listdir('input'):
-    with open(join('input', file), 'r', encoding='utf-8') as f:
-        content = f.read()
-    content = content.split('\n')
-    result = []
-
-    def save():
-        current.append(answer)
-        result.append(current)
-    for line in content:
-        line = sub(r'\s+', ' ', line)
-        line = line.replace(' .', '.')
-        line = line.replace(' ,', ',')
-        question = match(r'^[^\d]*(\d+)\.(.*)$', line)
-        if question:
-            if current:
-                save()
-            current = [[question.group(1), question.group(2).strip()]]
-        else:
-            variant = match(r'^([A-E]+)\.(.*)$', line)
-            if variant:
-                variant = [variant.group(1), variant.group(2).strip()]
-                if '*' in variant[1]:
-                    answer = variant[0]
-                    variant[1] = variant[1].replace('*', '')
-                current.append(variant)
-    save()
-
-    with open(join('utf-8', file + '.json'), 'w', encoding='utf-8') as f:
-        dump(result, f, indent=True, allow_nan=True, ensure_ascii=False)
-
+def generate(data, file):
+    # with open(join('utf-8', file + '.json'), 'w', encoding='utf-8') as f:
+    #     dump(data, f, indent=True, allow_nan=True, ensure_ascii=False)
     html = Element('html')
     head = Element('head')
     head.append(Element('meta', charset='utf-8'))
@@ -47,7 +16,7 @@ for file in listdir('input'):
     html.append(head)
     body = Element('body')
     ol1 = Element('ol')
-    for question in result:
+    for question in data:
         li1 = Element('li')
         span = Element('span')
         span.text = question[0][1]
@@ -55,14 +24,23 @@ for file in listdir('input'):
         ol2 = Element('ol', type='A')
         for i in range(1, len(question) - 1):
             li2 = Element('li')
-            li2.text = question[i][1]
+            # if question[i] and 2 == len(question[i]):
+            q = question[i]
+            if 2 == len(q):
+                li2.text = q[1]
             ol2.append(li2)
         li1.append(ol2)
         span = Element('span')
+        # if question[-1]:
         span.text = 'ANSWER: ' + question[-1]
         li1.append(span)
         ol1.append(li1)
     body.append(ol1)
     html.append(body)
-    with open(join('html', file + '.html'), 'w', encoding='utf-8') as f:
-        f.write(tostring(html, method='html', encoding='utf8', short_empty_elements=True).decode('utf8'))
+    with open(file, 'w', encoding='utf-8') as fout:
+        fout.write(tostring(html, method='html', encoding='utf8', short_empty_elements=True).decode('utf8'))
+# argv = [None, 'json/2.txt.json', 'html/2.html']
+if 3 == len(argv):
+    with open(argv[1], 'r', encoding='utf-8') as f:
+        data = load(f)
+    generate(data, argv[2])
