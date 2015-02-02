@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "Moodle fucker",
+    "author": "Taras Labiak",
+    "description": "",
+    "version": "0.1",
+    "icons": {
+        "16": "/img/logo16.png",
+        "128": "/img/logo128.png"
+    },
+  "background": {
+    "scripts": ["background.js"]
+  },
+    "browser_action": {
+        "default_title": "Fuck",
+        "default_icon": "img/logo128.png"
+    },
+    "permissions": [
+        "tabs",
+          "contextMenus",
+          "webNavigation",
+        "http://*/",
+        "https://*/"
+    ]
+}

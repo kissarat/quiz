@@ -3,3 +3,7 @@ cp1251/
 utf-8/
 html/
 input/
+json/
+__pycache__/
+count
+

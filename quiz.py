@@ -1,6 +1,5 @@
 from sys import argv
-from json import load, loads
-from os.path import join
+from json import load
 from xml.etree.ElementTree import Element, tostring
 
 
@@ -31,15 +30,17 @@ def generate(data, file):
             ol2.append(li2)
         li1.append(ol2)
         span = Element('span')
-        # if question[-1]:
-        span.text = 'ANSWER: ' + question[-1]
+        answer = question[-1]
+        if list == type(answer):
+            answer = answer[0]
+        span.text = 'ANSWER: ' + answer
         li1.append(span)
         ol1.append(li1)
     body.append(ol1)
     html.append(body)
     with open(file, 'w', encoding='utf-8') as fout:
         fout.write(tostring(html, method='html', encoding='utf8', short_empty_elements=True).decode('utf8'))
-# argv = [None, 'json/2.txt.json', 'html/2.html']
+# argv = [None, 'json/1.json', 'html/2.html']
 if 3 == len(argv):
     with open(argv[1], 'r', encoding='utf-8') as f:
         data = load(f)
