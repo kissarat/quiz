@@ -1,0 +1,10 @@
+.fuck-button {
+    float: left;
+    background-color: rgba(0, 128, 0, 0.2);
+    color: darkgreen;
+    border: 1px solid darkgreen;
+    cursor: pointer;
+    margin: auto;
+    text-align: center;
+    padding: 1mm;
+}
