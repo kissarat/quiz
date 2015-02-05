@@ -16,10 +16,12 @@
     }],
     "browser_action": {
         "default_title": "Fuck",
-        "default_icon": "img/logo128.png"
+        "default_icon": "img/logo128.png",
+        "default_popup": "popup.html"
     },
     "permissions": [
         "tabs",
+        "activeTab",
         "contextMenus",
         "webNavigation",
         "webRequest",

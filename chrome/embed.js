@@ -1,4 +1,3 @@
-window.alert = function() {throw new Error()};
 document.addEventListener('DOMContentLoaded', function() {
 //    var module = document.querySelector('script[src*="module.js"]');
     var s = document.querySelectorAll('script');
@@ -30,18 +29,24 @@ document.addEventListener('DOMContentLoaded', function() {
         list.push(current);
     }
 
-    function button(text, call) {
-        var div = document.createElement('div');
-        div.innerHTML = text;
-        div.onclick = call;
-        div.classList.add('fuck-button');
-        return div;
+});
+
+
+chrome.runtime.onMessage.addListener(function(answers) {
+    var questions = document.getElementsByClassName('qtext');
+    for (var i = 0; i < questions.length; i++) {
+        var q = questions.item(i);
+        var text = q.textContent;
+        for (var j = 0; j < answers.length; j++) {
+            var answer = answers[j];
+            if (text.indexOf(answer[0]) >= 0) {
+                var variants = q.nextSibling.document.body.getElementsByTagName('label');
+                for (var k = 0; k < variants.length; k++) {
+                    var variant = variants[k];
+                    if (variant.textContent.indexOf(answer[1]) >= 0)
+                        variant.previousSibling.checked = true;
+                }
+            }
+        }
     }
-
-    var save = button('Зберегти ' + list.length + ' питання', function() {
-        console.log(list);
-    });
-
-    var sesskey = document.getElementsByName('sesskey')[0];
-    sesskey.parentNode.insertBefore(save, sesskey);
 });
