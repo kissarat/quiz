@@ -14,8 +14,9 @@ files.onchange = function() {
             div.appendChild(name_div);
             var j;
             reads_number++;
+            var content = e.target.result;
             try {
-                var content = JSON.parse(e.target.result);
+                content = /\.json$/.test(this.name) ? JSON.parse(content) : parse(content);
                 for (j = 0; j < content.length; j++) {
                     var quiz = content[j];
                     var answer = letters[quiz.length - 1];
