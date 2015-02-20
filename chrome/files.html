@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Файли</title>
     <style type="text/css">
         .error {
             color: red;
@@ -21,13 +21,48 @@
             font-weight: bold;
             border-bottom: 1px solid transparent;
         }
+
+        thead th {
+            border-bottom: 1px solid black;
+        }
+
+        tfoot td {
+            border-top: 1px solid black;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 1px 5px;
+        }
+
+        tr:hover td {
+            background-color: #ddd;
+        }
+
+        th:nth-child(3), td:nth-child(3) {
+            width: 6em;
+        }
+
+        td:nth-child(even) {
+            background-color: #ededed;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
     </style>
 </head>
 <body>
 <input id="files" type="file" multiple />
+<label for="encoding" class="t">Encoding</label>
+<select id="encoding" style="display: none">
+    <option value="utf-8">utf-8</option>
+</select>
+<output id="encoding_info"></output>
 <table id="list">
     <thead>
     <tr>
+        <th></th>
         <th class="t">File</th>
         <th class="t">Number of questions</th>
         <th class="t">Size</th>
@@ -39,12 +74,13 @@
         <td></td>
         <td></td>
         <td></td>
+        <td></td>
     </tr>
     </tfoot>
 </table>
 <script type="text/javascript" src="parse.js"></script>
 <script type="text/javascript" src="ui.js"></script>
-<script type="text/javascript" src="background.js"></script>
+<script type="text/javascript" src="files.js"></script>
 <script type="text/javascript" src="locale/uk.js"></script>
 </body>
 </html>

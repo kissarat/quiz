@@ -15,7 +15,7 @@
         "run_at": "document_start"
     }],
     "background": {
-        "page": "background.html"
+        "scripts": ["background.js"]
     },
     "browser_action": {
         "default_title": "Fuck",

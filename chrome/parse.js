@@ -1,4 +1,6 @@
 function parse(content) {
+    if ('string' == typeof content)
+        content = content.split('\n');
     var result = [];
     var current;
     var answer;
@@ -12,8 +14,8 @@ function parse(content) {
     }
     // moodle gift format
     var gift = false;
-    for(var j=0; j<content.length; j++) {
-        var line = content[j];
+    for(var i=0; i<content.length; i++) {
+        var line = content[i];
         var comment = line.indexOf('//');
         if (comment >= 0)
             line = line.slice(0, comment);
@@ -74,7 +76,7 @@ function parse(content) {
         q = /^(\d+)/.exec(line);
         if (q) {
             save();
-            current.push(content[++j].trim());
+            current.push(content[++i].trim());
             continue;
         }
 
@@ -95,7 +97,7 @@ function parse(content) {
         else {
             v = /^([A-EА-Я])\./.exec(line);
             if (v) {
-                var text = content[++j];
+                var text = content[++i];
                 text = text.trim();
                 if (line.indexOf('*') > 0)
                     answer = text;
@@ -106,7 +108,7 @@ function parse(content) {
         //removed.push(j + 1 + '\t' + line);
     }
     save();
-    if (0 == result[0])
+    if (0 == result[0].length)
         result.shift();
     return result;
 }
