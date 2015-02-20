@@ -1,9 +1,9 @@
 {
     "manifest_version": 2,
-    "name": "Moodle fucker",
-    "author": "Taras Labiak",
-    "description": "",
-    "version": "0.1",
+    "name": "Moodle Fucker",
+    "author": "Тарас Лабяк",
+    "description": "Автоматично заповнює відповіді на запитання, беручи їх із завантажених вами списків",
+    "version": "0.2",
     "icons": {
         "16": "/img/logo16.png",
         "128": "/img/logo128.png"
@@ -14,10 +14,12 @@
         "css": ["embed.css"],
         "run_at": "document_start"
     }],
+    "background": {
+        "page": "background.html"
+    },
     "browser_action": {
         "default_title": "Fuck",
-        "default_icon": "img/logo128.png",
-        "default_popup": "popup.html"
+        "default_icon": "img/logo16.png"
     },
     "permissions": [
         "tabs",

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        .error {
+            color: red;
+        }
+
+        #list > div {
+            border-bottom: 1px solid gray;
+        }
+
+        #list > div > div:last-child {
+            float: right;
+        }
+
+        .summary {
+            text-align: right;
+            font-weight: bold;
+            border-bottom: 1px solid transparent;
+        }
+    </style>
+</head>
+<body>
+<input id="files" type="file" multiple />
+<table id="list">
+    <thead>
+    <tr>
+        <th class="t">File</th>
+        <th class="t">Number of questions</th>
+        <th class="t">Size</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+    <tfoot>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tfoot>
+</table>
+<script type="text/javascript" src="parse.js"></script>
+<script type="text/javascript" src="ui.js"></script>
+<script type="text/javascript" src="background.js"></script>
+<script type="text/javascript" src="locale/uk.js"></script>
+</body>
+</html>
