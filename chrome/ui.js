@@ -1,7 +1,3 @@
-
-var $busy = $id('busy');
-
-
 function $id(id) {
     return document.getElementById(id);
 }
@@ -21,6 +17,21 @@ function $name(name) {
     return $field[0];
 }
 
+var $busy = $id('busy');
+
+function busy(value) {
+    if (value)
+        $busy.classList.add('busy');
+    else
+        $busy.classList.remove('busy');
+}
+
+String.prototype.format = function() {
+    var result = this;
+    for (var i = 0; i < arguments.length; i++)
+        result = result.replace('%', arguments[i]);
+    return result;
+};
 
 function appropriate($element, attributes) {
     for (var key in attributes) {
@@ -29,8 +40,11 @@ function appropriate($element, attributes) {
     }
 }
 
-function fill_rows($container, rows) {
-    $container.innerHTML = '';
+function array(iterable) {
+    return Array.prototype.slice.call(iterable);
+}
+
+function add_rows($container, rows) {
     for (var i = 0; i < rows.length; i++) {
         var row = rows[i];
         var $row = document.createElement('tr');
