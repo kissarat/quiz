@@ -4,6 +4,20 @@
     <meta charset="utf-8" />
     <title>Файли</title>
     <style type="text/css">
+        article {
+            margin-left: 32px;
+            padding: 0 0.1in;
+        }
+
+        aside {
+            position: fixed;
+            width: 32px;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            /*border-right: 1px solid black;*/
+        }
+
         .error {
             color: red;
         }
@@ -50,35 +64,52 @@
         table {
             border-collapse: collapse;
         }
+
+        #busy {
+            display: inline-block;;
+            width: 32px;
+            height: 32px;
+        }
+
+        .busy {
+            background-image: url("img/busy.gif");
+        }
+
     </style>
 </head>
 <body>
-<input id="files" type="file" multiple />
-<label for="encoding" class="t">Encoding</label>
-<select id="encoding" style="display: none">
-    <option value="utf-8">utf-8</option>
-</select>
-<output id="encoding_info"></output>
-<table id="list">
-    <thead>
-    <tr>
-        <th></th>
-        <th class="t">File</th>
-        <th class="t">Number of questions</th>
-        <th class="t">Size</th>
-    </tr>
-    </thead>
-    <tbody></tbody>
-    <tfoot>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    </tfoot>
-</table>
+<aside>
+    <div id="busy"></div>
+</aside>
+<article>
+    <input id="files" type="file" multiple />
+    <label for="encoding" class="t">Encoding</label>
+    <select id="encoding" style="display: none">
+        <option value="utf-8">utf-8</option>
+    </select>
+    <output id="encoding_info"></output>
+    <table id="list">
+        <thead>
+        <tr>
+            <th></th>
+            <th class="t">File</th>
+            <th class="t">Number of questions</th>
+            <th class="t">Size</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tfoot>
+    </table>
+</article>
 <script type="text/javascript" src="parse.js"></script>
+<script type="text/javascript" src="md5.js"></script>
 <script type="text/javascript" src="ui.js"></script>
 <script type="text/javascript" src="files.js"></script>
 <script type="text/javascript" src="locale/uk.js"></script>

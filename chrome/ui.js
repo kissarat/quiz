@@ -1,3 +1,7 @@
+
+var $busy = $id('busy');
+
+
 function $id(id) {
     return document.getElementById(id);
 }
@@ -19,7 +23,6 @@ function $name(name) {
 
 
 function appropriate($element, attributes) {
-    var keys = Object.keys(attributes);
     for (var key in attributes) {
         if (isNaN(key) && 'length' != key)
             $element.setAttribute(key, attributes[key]);
@@ -86,6 +89,12 @@ function fire(event, $target) {
 function change($target, value) {
     $target.value = value;
     fire('change', $target);
+}
+
+function property(name) {
+    return function(object) {
+        return object[name];
+    }
 }
 
 var encodings = ['utf-8', 'cp1251', 'koi8'];
