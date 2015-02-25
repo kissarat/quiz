@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title>Файли</title>
+    <link rel="stylesheet" type="text/css" href="evil-icons/assets/evil-icons.css" />
+    <script src="evil-icons/assets/evil-icons.js"></script>
     <style type="text/css">
         article {
             margin-left: 32px;
@@ -66,13 +68,11 @@
         }
 
         #busy {
-            display: inline-block;;
-            width: 32px;
-            height: 32px;
+            visibility: hidden;
         }
 
-        .busy {
-            background-image: url("img/busy.gif");
+        #busy.busy {
+            visibility: visible;
         }
 
         #max_file_size {
@@ -82,7 +82,9 @@
 </head>
 <body>
 <aside>
-    <div id="busy"></div>
+    <div id="busy">
+        <div data-icon="ei-spinner-2"></div>
+    </div>
 </aside>
 <article>
     <input id="files" type="file" multiple />

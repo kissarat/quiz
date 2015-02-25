@@ -1,0 +1,3 @@
+[submodule "chrome/evil-icons"]
+	path = chrome/evil-icons
+	url = git@github.com:outpunk/evil-icons.git
