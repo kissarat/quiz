@@ -50,16 +50,21 @@ function add_rows($container, rows) {
         var $row = document.createElement('tr');
         for (var j = 0; j < row.length; j++) {
             var cell = row[j];
-            var bool = 'boolean' == typeof cell;
             var $cell = document.createElement('td');
-            if (bool) {
-                var $input = document.createElement('input');
-                $input.type = 'checkbox';
-                $input.checked = cell;
-                $cell.appendChild($input);
+            switch (typeof cell) {
+                case 'boolean':
+                    var $input = document.createElement('input');
+                    $input.type = 'checkbox';
+                    $input.checked = cell;
+                    $cell.appendChild($input);
+                    break;
+                case 'function':
+                    $cell.onclick = cell;
+                    break;
+                default:
+                    $cell.innerHTML = cell;
             }
-            else
-                $cell.innerHTML = cell;
+            appropriate($cell, cell);
             $row.appendChild($cell);
         }
         appropriate($row, row);

@@ -2,15 +2,17 @@ function parse(content) {
     if ('string' == typeof content)
         content = content.split('\n');
     var result = [];
-    var current;
+    var current = [];
     var answer;
     function save() {
-        if (answer)
-            current.push(answer);
-        if (current)
+        if (current) {
+            if (answer)
+                current.push(answer);
+            //if (result.length < 1 || result[result.length - 1][0] != current[0])
             result.push(current);
         answer = null;
         current = [];
+        }
     }
     // moodle gift format
     var gift = false;
@@ -110,5 +112,10 @@ function parse(content) {
     save();
     if (0 == result[0].length)
         result.shift();
+    var qa = {};
+    while(current = current.pop() && current.length >= 2)
+        qa[current[0]] = current[current.length-1];
+    for(q in qa)
+        result.push(q, qa[q]);
     return result;
 }

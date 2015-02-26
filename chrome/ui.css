@@ -1,0 +1,96 @@
+article {
+    margin-left: 32px;
+    padding: 0 0.1in;
+}
+
+aside {
+    position: fixed;
+    width: 32px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    /*border-right: 1px solid black;*/
+}
+
+.error {
+    color: red;
+}
+
+#list > div {
+    border-bottom: 1px solid gray;
+}
+
+#list > div > div:last-child {
+    float: right;
+}
+
+.summary {
+    text-align: right;
+    font-weight: bold;
+    border-bottom: 1px solid transparent;
+}
+
+thead th {
+    border-bottom: 1px solid black;
+}
+
+tfoot td {
+    border-top: 1px solid black;
+    font-weight: bold;
+}
+
+td {
+    padding: 1px 5px;
+}
+
+tr:hover td {
+    background-color: #ddd;
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 6em;
+}
+
+td:nth-child(even) {
+    background-color: #ededed;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+aside > * {
+    width: 32px;
+    height: 32px;
+}
+
+#busy {
+    visibility: hidden;
+    background-image: url("evil-icons/assets/icons/ei-spinner-3.svg");
+    background-size: contain;
+    -webkit-animation: rotate;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+#busy.busy {
+    visibility: visible;
+}
+
+.delete {
+    background-size: contain;
+    background: url("evil-icons/assets/icons/ei-trash.svg") no-repeat center;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#max_file_size {
+    width: 3em;
+}
+
+@-webkit-keyframes rotate {
+    from {-webkit-transform: rotate(0deg)}
+    to {-webkit-transform: rotate(360deg)}
+}

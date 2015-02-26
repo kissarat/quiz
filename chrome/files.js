@@ -49,7 +49,7 @@ function summary() {
     var $summary = $all('#list > tfoot td');
     $summary[2].innerHTML = answers;
     $summary[3].innerHTML = metric(size);
-    $summary[5].innerHTML = errors;
+    $summary[6].innerHTML = errors;
     /*chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, files_read);
     });*/
@@ -62,12 +62,20 @@ function Source(file) {
 
 Source.prototype = {
     get row() {
+        var source = this;
+        function remove() {
+            var index = sources.indexOf(source);
+            if (delete sources[index])
+                this.parentNode.remove();
+        }
+        remove.class = 'delete';
         var r = [
             this.class.indexOf('error') < 0,
             this.file.name,
             this.answers ? this.answers.length : 0,
             metric(this.file.size),
             this.encoding,
+            remove,
             this.error || ''
         ];
         r.class = this.class.join(' ');
@@ -98,11 +106,11 @@ Source.prototype = {
                 answers.push([quiz[0], quiz[quiz.length - 1]]);
             }
             this.answers = answers;
+            delete this.content;
         }
         catch (ex) {
             this.class.push('error');
             this.error = ex.message;
         }
-        delete this.content;
     }
 };
