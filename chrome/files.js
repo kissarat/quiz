@@ -16,7 +16,10 @@ $files.onchange = function() {
                 }
 
             if (!exists) {
-                source.parse();
+                if (!source.error)
+                    source.parse();
+                if (source.error)
+                    source.class.push('error');
                 sources.push(source);
                 add_rows($tbody, [source.row]);
             }
@@ -74,7 +77,7 @@ Source.prototype = {
             this.file.name,
             this.answers ? this.answers.length : 0,
             metric(this.file.size),
-            this.encoding,
+            this.encoding || '',
             remove,
             this.error || ''
         ];
@@ -93,7 +96,12 @@ Source.prototype = {
             source.content = content;
             call();
         };
-        reader.readAsText(this.file, encoding);
+        if (this.file.size < $id('max_file_size').value * 1024 * 1024)
+            reader.readAsText(this.file, encoding);
+        else {
+            this.error = t('File size exceeded %').format($id('max_file_size').value + 'MB');
+            call();
+        }
     },
 
     parse: function() {
@@ -109,7 +117,6 @@ Source.prototype = {
             delete this.content;
         }
         catch (ex) {
-            this.class.push('error');
             this.error = ex.message;
         }
     }

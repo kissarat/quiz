@@ -10,7 +10,8 @@ locale.uk = {
     "utf-8": "Найбільш поширене кодування, яке підтримує всі мови",
     "cp1251": "Кодування кирилиці, поширене в Windows",
     "koi8": "Кодування кирилиці, поширене в Linux",
-    "Unsupported file type %s": "Тип файлів %s не підтримується"
+    "Unsupported file type %s": "Тип файлів %s не підтримується",
+    "File size exceeded %": "Розмір файлу перевищує %s"
 };
 
 function t(text, defaultValue) {
