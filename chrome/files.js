@@ -121,3 +121,22 @@ Source.prototype = {
         }
     }
 };
+
+$id('download').onclick = function () {
+    var links = $$('#links > textarea').value;
+    links = links.split('\n');
+    links.forEach(function (link) {
+        request(link, function(e) {
+            var type = e.target.getResponseHeader('Content-Type');
+            if (type.indexOf('text/html') >= 0) {
+                var doc = document.implementation.createHTMLDocument();
+                doc.documentElement.innerHTML = e.target.responseText;
+                var anchors = doc.getElementsByTagName('a');
+                for (var i = 0; i < anchors.length; i++) {
+                    var anchor = anchors[i];
+                    console.log(anchor.getAttribute('href'));
+                }
+            }
+        })
+    })
+};

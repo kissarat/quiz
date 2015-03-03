@@ -10,14 +10,16 @@
     <div id="busy"></div>
 </aside>
 <article>
-    <input id="files" type="file" multiple />
-    <label class="t">Max file size</label>
-    <input id="max_file_size" type="number" value="16" min="1"> MB.
-    <label for="encoding" class="t">Encoding</label>
-    <select id="encoding" style="display: none">
-        <option value="utf-8">utf-8</option>
-    </select>
-    <output id="encoding_info"></output>
+	<div>
+		<input id="files" type="file" multiple />
+		<label class="t">Max file size</label>
+		<input id="max_file_size" type="number" value="16" min="1"> MB.
+		<label for="encoding" class="t">Encoding</label>
+		<select id="encoding" style="display: none">
+			<option value="utf-8">utf-8</option>
+		</select>
+		<output id="encoding_info"></output>
+	</div>
     <table id="list">
         <thead>
         <tr>
@@ -43,7 +45,12 @@
         </tr>
         </tfoot>
     </table>
+	<div id="links">
+		<textarea></textarea>
+		<button id="download" type="button" class="t">Download</button>
+	</div>
 </article>
+
 <script type="text/javascript" src="parse.js"></script>
 <script type="text/javascript" src="md5.js"></script>
 <script type="text/javascript" src="ui.js"></script>

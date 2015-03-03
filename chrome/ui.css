@@ -3,6 +3,10 @@ article {
     padding: 0 0.1in;
 }
 
+article > * {
+    vertical-align: top
+}
+
 aside {
     position: fixed;
     width: 32px;
@@ -56,6 +60,7 @@ td:nth-child(even) {
 }
 
 table {
+    display: inline-block;
     border-collapse: collapse;
 }
 
@@ -93,4 +98,21 @@ aside > * {
 @-webkit-keyframes rotate {
     from {-webkit-transform: rotate(0deg)}
     to {-webkit-transform: rotate(360deg)}
+}
+
+article > * {
+    margin: 2mm;
+}
+
+#links {
+    display: inline-block;
+}
+
+#links > textarea {
+    min-width: 30vw;
+    min-height: 30vh;
+}
+
+#download {
+    display: block;
 }

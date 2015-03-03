@@ -141,3 +141,19 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 addEventListener('load', trace_event);
+
+function request(url, method, data, call) {
+    if (method instanceof Function) {
+        data = method;
+        method = 'GET';
+    }
+    if (data instanceof Function) {
+        call = data;
+        data = null;
+    }
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.onload = call;
+    xhr.send(data);
+    return xhr;
+}

@@ -1,6 +1,7 @@
 var locale = window.locale || {};
 locale.uk = {
     ".": ",",
+    "Download": "Завантажити",
     "File": "Файл",
     "Number of questions": "Кількість запитань",
     "Size": "Розмір",

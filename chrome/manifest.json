@@ -27,6 +27,7 @@
         "contextMenus",
         "webNavigation",
         "webRequest",
+        "downloads",
         "http://*/",
         "https://*/"
     ]
