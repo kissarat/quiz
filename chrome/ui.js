@@ -140,8 +140,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('TextDecoder not found');
 });
 
-addEventListener('load', trace_event);
-
 function request(url, method, data, call) {
     if (method instanceof Function) {
         data = method;

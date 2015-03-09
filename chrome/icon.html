@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<svg></svg>
+<script src="ui.js"></script>
+<script>
+	var svg = 'http://www.w3.org/2000/svg';
+	var icons;
+	onload = function() {
+		request('img/icon.json', function(e) {
+			icons = JSON.parse(e.target.responseText);
+			for(var id in icons)
+				svg_icon(id);
+		});
+	};
+
+	function svg_icon(id) {
+		//var $svg = document.createElementNS(svg, 'svg');
+		//$svg.innerHTML = '';
+		var $svg = document.querySelector('svg');
+		var g = document.createElementNS(svg, 'g');
+		var paths = icons[id];
+		for (var i = 0; i < paths.length; i++) {
+			var path = document.createElementNS(svg, 'path');
+			path.setAttribute('d', paths[i]);
+			g.appendChild(path);
+		}
+		g.id = id;
+		$svg.appendChild(g);
+		var box = g.getBoundingClientRect();
+		var width = Math.ceil(box.width);
+		var height = Math.ceil(box.height);
+		g.style.width = width + 'px';
+		g.style.height = height + 'px';
+		/*
+		document.body.appendChild($svg);
+		$svg.id = id;
+		*/
+	}
+</script>
+</body>
+</html>

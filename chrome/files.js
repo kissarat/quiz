@@ -140,3 +140,15 @@ $id('download').onclick = function () {
         })
     })
 };
+
+/*
+var a = {};
+var g = document.querySelectorAll('#Evil-Icons > g');
+for(var i=0; i<g.length; i++) {
+    var p = [];
+    var gg = g[i].getElementsByTagName('path');
+    for(var j=0; j<gg.length; j++)
+        p.push(gg[j].getAttribute('d'));
+    a[g[i].id] = p
+}
+*/
