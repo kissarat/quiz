@@ -1,0 +1,30 @@
+{
+    "manifest_version": 2,
+    "name": "Book Descriptor",
+    "author": "Тарас Лабяк",
+    "description": "",
+    "version": "0.1",
+    "icons": {
+        "16": "book.png",
+        "128": "book.png"
+    },
+    "content_scripts": [{
+        "matches": [
+            "http://www.bookstore.co.uk/*",
+            "http://www.twirpx.com/*"
+        ],
+        "js": ["embed.js"],
+        "run_at": "document_end"
+    }],
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "browser_action": {
+        "default_title": "Fuck",
+        "default_icon": "book.png"
+    },
+    "permissions": [
+        "tabs",
+        "activeTab"
+    ]
+}
